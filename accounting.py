@@ -10,6 +10,12 @@ def check_payment(customer_name, customer_melons, customer_paid):
     print(f"{customer_name} paid ${customer_paid:.2f}",
           f"expected ${customer_expected:.2f}"
           )
+    # Print whether the user over or underpaid for theri melons
+    # If the expected and paid amounts are not the same.
+    if customer_expected < customer_paid:
+      print(f"{customer_name} overpaid for their melons.")
+    elif customer_expected > customer_paid:
+      print(f"{customer_name} underpaid for their melons.")
 
 def parse_text_file(file):
   """Open a text file and parse each line to be evaluated by the print_customer_data function."""
