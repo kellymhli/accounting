@@ -5,7 +5,7 @@ def check_payment(customer_name, customer_melons, customer_paid):
   # Calculate the expected cost of the amount of melons purchased
   customer_expected = customer_melons * melon_cost
 
-  # Print a statement if the about paid does not equal the amount expecteds
+  # Print a statement if the amount paid does not equal the amount expected
   if customer_expected != customer_paid:
     print(f"{customer_name} paid ${customer_paid:.2f}",
           f"expected ${customer_expected:.2f}"
@@ -18,8 +18,8 @@ def parse_text_file(file):
   new_file = open(file)
 
   # Iterate through each line in the text file
+  # Removing trailing white space (\n) from each
   for line in new_file:
-    # Remove any white space at the end of each line (\n)
     line = line.rstrip()
     # Create a list by splitting the line where "|" occurs
     parsed_line = line.split("|")
@@ -29,6 +29,8 @@ def parse_text_file(file):
     customer_name = full_name.split(" ")[0]
     # Check if the customer paid the right amount
     check_payment(customer_name, int(customer_melons), float(customer_paid))
+
+  new_file.close()
 
 def main():
   check_payment("Joe", 5, 5.00)
